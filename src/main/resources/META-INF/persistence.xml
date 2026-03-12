@@ -14,10 +14,14 @@
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <!-- L'URL, user et password sont injectés dynamiquement par DatabaseInitializer -->
+            
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}"/>
+            <property name="jakarta.persistence.jdbc.user" value="${MYSQLUSER}"/>
+            <property name="jakarta.persistence.jdbc.password" value="${MYSQLPASSWORD}"/>
 
-            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
-        <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            
             <property name="eclipselink.logging.level" value="INFO"/>
             <property name="eclipselink.target-database" value="MySQL"/>
         </properties>
